@@ -6,7 +6,7 @@ const createReducer = (asyncReducers = {}) => combineReducers({
   ...asyncReducers,
 })
 
-const configureStore = locale => {
+const configureStore = () => {
   const store = createStore(
     createReducer(),
   )

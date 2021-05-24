@@ -4,7 +4,7 @@ import configureStore from "../utils/store";
 import Layout from '../components/layout'
 
 const MyApp = ({ Component, pageProps  }) => {
-  const store = configureStore('en')
+  const store = configureStore()
 
   return (
     <Provider store={store}>

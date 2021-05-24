@@ -5,7 +5,7 @@ import { createReducer } from '../utils/reducer'
 import {
   APP_INCREMENT,
   APP_DECREMENT,
-} from '../constants/app'
+} from '../constants/simple_operations'
 
 export const initialState = {
   useLocalStorage: false,

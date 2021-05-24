@@ -8,14 +8,14 @@ const createReducer = (asyncReducers = {}) => combineReducers({
 
 const configureStore = locale => {
   const store = createStore(
-      createReducer(),
+    createReducer(),
   )
 
   store.asyncReducers = {}
 
   store.injectReducer = (key, asyncReducer) => {
-      store.asyncReducers[key] = asyncReducer
-      store.replaceReducer(createReducer(store.asyncReducers))
+    store.asyncReducers[key] = asyncReducer
+    store.replaceReducer(createReducer(store.asyncReducers))
   }
 
   return store

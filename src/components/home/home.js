@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
-import styles from './App.module.css';
-import { connect } from 'react-redux';
+import styles from './home.module.css';
 import Link from 'next/link'
 
-const mapStateToProps = state => ({
-  counter: state.simple_operations.appProps.counter,
-})
-
-const mapDispatchToProps = dispatch => ({
-  onClickIncrement: () => dispatch({ type: 'APP_INCREMENT' }),
-  onClickDecrement: () => dispatch({ type: 'APP_DECREMENT' }),
-})
-
-class App extends Component {
+class Home extends Component {
   render() {
     return (
       <div className={styles.App}>
@@ -39,12 +29,12 @@ class App extends Component {
             {this.props.counter}
           </p>
 
-          <button onClick={this.props.onClickIncrement}>Send Message DisplayChannel</button>
-          <button onClick={this.props.onClickDecrement}>Send Message UserChannel</button>
+          <button onClick={this.props.onClickIncrement}>Click Increment</button>
+          <button onClick={this.props.onClickDecrement}>Click Decrement</button>
         </header>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default Home;

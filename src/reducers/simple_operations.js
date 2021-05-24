@@ -1,48 +1,48 @@
 import {
-    evolve, compose
+  evolve, compose
 } from 'ramda'
 import { createReducer } from '../utils/reducer'
 import {
-    APP_INCREMENT,
-    APP_DECREMENT,
+  APP_INCREMENT,
+  APP_DECREMENT,
 } from '../constants/app'
 
 export const initialState = {
-    useLocalStorage: false,
-    appProps: { counter: 0 },
+  useLocalStorage: false,
+  appProps: { counter: 0 },
 }
 
 const incrementAppProps = (state, { payload }) => {
-    console.log('incrementAppProps', payload)
+  console.log('incrementAppProps', payload)
 
-    return compose(
-        evolve({
-            appProps: {
-                counter: counter => {
-                    return counter + 1
-                }
-            }
-        }),
-    )(state)
+  return compose(
+    evolve({
+      appProps: {
+        counter: counter => {
+          return counter + 1
+        }
+      }
+    }),
+  )(state)
 }
 
 const decrementAppProps = (state, { payload }) => {
-    console.log('decrementAppProps', payload)
+  console.log('decrementAppProps', payload)
 
-    return compose(
-        evolve({
-            appProps: {
-                counter: counter => {
-                    return counter - 1
-                }
-            }
-        }),
-    )(state)
+  return compose(
+    evolve({
+      appProps: {
+        counter: counter => {
+          return counter - 1
+        }
+      }
+    }),
+  )(state)
 }
 
 const handlers = {
-    [APP_INCREMENT]: incrementAppProps,
-    [APP_DECREMENT]: decrementAppProps
+  [APP_INCREMENT]: incrementAppProps,
+  [APP_DECREMENT]: decrementAppProps
 }
 
 export default createReducer(initialState, handlers)

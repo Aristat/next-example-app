@@ -1,5 +1,5 @@
 import {APP_SET_RANDOM_NUMBER} from "../constants/posts";
-import {createReducer} from "../utils/reducer";
+import {createReducer} from "../store/reducer";
 import {compose, evolve} from "ramda";
 
 export const POSTS_INITIAL_STATE = {

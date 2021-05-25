@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import {APP_SET_RANDOM_NUMBER} from "../../constants/posts";
+import Link from "next/link";
 
 const reduxProps = () => {
   const randomNumber = useSelector((state) => state.postsReducer.randomNumber)
@@ -32,6 +33,13 @@ const Blog = () => {
         </p>
 
         <button onClick={setRandomNumber}>Set random number</button>
+      </div>
+      <div>
+        <p>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </p>
       </div>
     </div>
   )

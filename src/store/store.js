@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { rootReducers, initReducersState } from './../reducers'
+import { rootReducers, initReducersState } from '../reducers'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 let store

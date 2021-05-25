@@ -1,7 +1,7 @@
 import App from 'next/app'
 import '../styles/global.css'
 import { Provider } from 'react-redux';
-import {useStore} from "../utils/store";
+import {useStore} from "../store/store";
 import Layout from '../components/layout'
 import {mergeDeepRight} from "ramda";
 

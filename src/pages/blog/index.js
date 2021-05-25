@@ -1,5 +1,5 @@
 import BlogComponent from '../../components/blog';
-import {initializeStore} from "../../utils/store";
+import {initializeStore} from "../../store/store";
 
 export default function Blog(props) {
   console.log('props: ', props)

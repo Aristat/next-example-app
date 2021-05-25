@@ -1,7 +1,7 @@
 import {
   evolve, compose
 } from 'ramda'
-import { createReducer } from '../utils/reducer'
+import { createReducer } from '../store/reducer'
 import {
   APP_INCREMENT,
   APP_DECREMENT,

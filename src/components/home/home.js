@@ -24,8 +24,8 @@ const Home = () => {
   const { counter, increment, decrement } = reduxProps()
 
   return (
-    <div className={styles.App}>
-      <header className={styles.AppHeader}>
+    <div className={styles.Home}>
+      <header className={styles.HomeHeader}>
         <h1 className="title">
           Read{' '}
           <p>
@@ -38,7 +38,7 @@ const Home = () => {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
-          className={styles.AppLink}
+          className={styles.HomeLink}
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"

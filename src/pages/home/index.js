@@ -1,5 +1,5 @@
 import HomeComponent from '../../components/home';
-import {initializeStore} from "../../utils/store";
+import {initializeStore} from "../../store/store";
 import { mergeDeepRight } from 'ramda'
 
 export default function Home(props) {
@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
   // Get data from backend API
   const backendProps = {
     calculatorReducer: {
-      counter: 5,
+      counter: 99,
     },
   }
 

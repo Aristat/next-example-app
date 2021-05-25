@@ -1,40 +1,60 @@
-import React, { Component } from 'react'
 import styles from './home.module.css';
 import Link from 'next/link'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  APP_INCREMENT,
+  APP_DECREMENT,
+} from '../../constants/calculator'
 
-class Home extends Component {
-  render() {
-    return (
-      <div className={styles.App}>
-        <header className={styles.AppHeader}>
-          <h1 className="title">
-            Read{' '}
-            <Link href="/posts/first-post">
-              <a>this page!</a>
+const reduxProps = () => {
+  const counter = useSelector((state) => state.calculatorReducer.counter)
+  const dispatch = useDispatch()
+  const increment = () =>
+    dispatch({
+      type: APP_INCREMENT,
+    })
+  const decrement = () =>
+    dispatch({
+      type: APP_DECREMENT,
+    })
+  return { counter, increment, decrement }
+}
+
+const Home = () => {
+  const { counter, increment, decrement } = reduxProps()
+
+  return (
+    <div className={styles.App}>
+      <header className={styles.AppHeader}>
+        <h1 className="title">
+          Read{' '}
+          <p>
+            <Link href="/blog">
+              <a>Blog</a>
             </Link>
-          </h1>
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
           </p>
-          <a
-            className={styles.AppLink}
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Click me
-          </a>
+        </h1>
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className={styles.AppLink}
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Click me
+        </a>
 
-          <p>
-            {this.props.counter}
-          </p>
+        <p>
+          {counter}
+        </p>
 
-          <button onClick={this.props.onClickIncrement}>Click Increment</button>
-          <button onClick={this.props.onClickDecrement}>Click Decrement</button>
-        </header>
-      </div>
-    );
-  }
+        <button onClick={increment}>Click Increment</button>
+        <button onClick={decrement}>Click Decrement</button>
+      </header>
+    </div>
+  )
 }
 
 export default Home;

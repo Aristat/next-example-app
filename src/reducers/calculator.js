@@ -1,6 +1,4 @@
-import {
-  evolve, compose
-} from 'ramda'
+import { evolve } from 'ramda'
 import { createReducer } from '../store/reducer'
 import {
   APP_INCREMENT,
@@ -14,30 +12,19 @@ export const CALCULATOR_INITIAL_STATE = {
 const increment = (state, { payload }) => {
   console.log('calculator increment, payload: ', payload, ' state: ', state)
 
-  return compose(
-    evolve({
-      counter: counter => {
-        return counter + 1
-      }
-    }),
-  )(state)
+  return evolve({ counter: counter => counter + 1 }, state)
 }
 
 const decrement = (state, { payload }) => {
   console.log('calculator decrement, payload: ', payload, ' state: ', state)
 
-  return compose(
-    evolve({
-      counter: counter => {
-        return counter - 1
-      }
-    }),
-  )(state)
+  return evolve({ counter: counter => counter - 1 }, state)
 }
 
 const handlers = {
   [APP_INCREMENT]: increment,
-  [APP_DECREMENT]: decrement
+  [APP_DECREMENT]: decrement,
 }
 
-export default createReducer(CALCULATOR_INITIAL_STATE, handlers)
+const calculatorReducer = createReducer(CALCULATOR_INITIAL_STATE, handlers)
+export default calculatorReducer

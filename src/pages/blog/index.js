@@ -1,5 +1,5 @@
-import BlogComponent from '../../components/blog';
-import {initializeStore} from "../../store/store";
+import BlogComponent from '../../components/blog'
+import { initializeStore } from '../../store/store'
 
 export default function Blog(props) {
   console.log('props: ', props)
@@ -9,18 +9,16 @@ export default function Blog(props) {
   )
 }
 
-export async function getServerSideProps(context) {
-  console.log('getServerSideProps blog')
-
+export async function getServerSideProps() {
   // Get data from backend API
   const backendProps = {
     postsReducer: {
       posts: [
-        {name: 'hello'},
-        {name: 'hi'},
-        {name: 'bye'},
+        { name: 'hello' },
+        { name: 'hi' },
+        { name: 'bye' },
       ],
-      randomNumber: 0
+      randomNumber: 0,
     },
   }
 

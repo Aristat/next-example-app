@@ -1,22 +1,21 @@
-import styles from './home.module.css';
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
+import { path } from 'ramda'
+import styles from './home.module.css'
 import {
   APP_INCREMENT,
   APP_DECREMENT,
 } from '../../constants/calculator'
 
 const reduxProps = () => {
-  const counter = useSelector((state) => state.calculatorReducer.counter)
+  const counter = useSelector(state => path(['calculatorReducer', 'counter'], state))
   const dispatch = useDispatch()
-  const increment = () =>
-    dispatch({
-      type: APP_INCREMENT,
-    })
-  const decrement = () =>
-    dispatch({
-      type: APP_DECREMENT,
-    })
+  const increment = () => dispatch({
+    type: APP_INCREMENT,
+  })
+  const decrement = () => dispatch({
+    type: APP_DECREMENT,
+  })
   return { counter, increment, decrement }
 }
 
@@ -27,7 +26,8 @@ const Home = () => {
     <div className={styles.Home}>
       <header className={styles.HomeHeader}>
         <h1 className="title">
-          Read{' '}
+          Read
+          {' '}
           <p>
             <Link href="/blog">
               <a>Blog</a>
@@ -35,7 +35,11 @@ const Home = () => {
           </p>
         </h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit
+          {' '}
+          <code>src/App.js</code>
+          {' '}
+          and save to reload.
         </p>
         <a
           className={styles.HomeLink}
@@ -50,11 +54,11 @@ const Home = () => {
           {counter}
         </p>
 
-        <button onClick={increment}>Click Increment</button>
-        <button onClick={decrement}>Click Decrement</button>
+        <button type="button" onClick={increment}>Click Increment</button>
+        <button type="button" onClick={decrement}>Click Decrement</button>
       </header>
     </div>
   )
 }
 
-export default Home;
+export default Home

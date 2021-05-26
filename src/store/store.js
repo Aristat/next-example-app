@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { rootReducers, initReducersState } from '../reducers'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import { rootReducers, initReducersState } from '../reducers'
 
 let store
 
@@ -14,17 +14,17 @@ function initStore(preloadedState = initReducersState) {
   return createStore(
     createReducer(),
     preloadedState,
-    composeWithDevTools(applyMiddleware())
+    composeWithDevTools(applyMiddleware()),
   )
 }
 
-export const initializeStore = (preloadedState) => {
-  let _store = store ?? initStore(preloadedState)
+export const initializeStore = preloadedState => {
+  let new_store = store ?? initStore(preloadedState)
 
   // After navigating to a page with an initial Redux state, merge that state
   // with the current state in the store, and create a new store
   if (preloadedState && store) {
-    _store = initStore({
+    new_store = initStore({
       ...store.getState(),
       ...preloadedState,
     })
@@ -33,18 +33,18 @@ export const initializeStore = (preloadedState) => {
   }
 
   // For SSG and SSR always create a new store
-  if (typeof window === 'undefined') return _store
+  if (typeof window === 'undefined') return new_store
 
-  _store.asyncReducers = {}
-  _store.injectReducer = (key, asyncReducer) => {
-    _store.asyncReducers[key] = asyncReducer
-    _store.replaceReducer(createReducer(store.asyncReducers))
+  new_store.asyncReducers = {}
+  new_store.injectReducer = (key, asyncReducer) => {
+    new_store.asyncReducers[key] = asyncReducer
+    new_store.replaceReducer(createReducer(store.asyncReducers))
   }
 
   // Create the store once in the client
-  if (!store) store = _store
+  if (!store) store = new_store
 
-  return _store
+  return new_store
 }
 
 export function useStore(state) {

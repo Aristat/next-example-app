@@ -1,6 +1,6 @@
-import HomeComponent from '../../components/home';
-import {initializeStore} from "../../store/store";
 import { mergeDeepRight } from 'ramda'
+import HomeComponent from '../../components/home'
+import { initializeStore } from '../../store/store'
 
 export default function Home(props) {
   console.log('props: ', props)
@@ -10,7 +10,7 @@ export default function Home(props) {
   )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   console.log('getServerSideProps home')
 
   // Get data from backend API
@@ -24,6 +24,6 @@ export async function getServerSideProps(context) {
 
   return mergeDeepRight(
     { props: { initialReduxState: reduxStore.getState() } },
-    { props: { language_2: 'test_2' } }
+    { props: { language_2: 'test_2' } },
   )
 }

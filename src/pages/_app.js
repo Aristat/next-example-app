@@ -1,11 +1,12 @@
 import App from 'next/app'
 import '../styles/global.css'
-import { Provider } from 'react-redux';
-import {useStore} from "../store/store";
+import { Provider } from 'react-redux'
+import { mergeDeepRight } from 'ramda'
+import PropTypes from 'prop-types'
+import { useStore } from '../store/store'
 import Layout from '../components/layout'
-import {mergeDeepRight} from "ramda";
 
-const MyApp = ({ Component, pageProps  }) => {
+const MyApp = ({ Component, pageProps }) => {
   const store = useStore(pageProps.initialReduxState)
 
   return (
@@ -17,13 +18,16 @@ const MyApp = ({ Component, pageProps  }) => {
   )
 }
 
+MyApp.propTypes = {
+  Component: PropTypes.elementType,
+  pageProps: PropTypes.objectOf(PropTypes.any),
+}
+
 MyApp.getInitialProps = async context => {
   const appProps = await App.getInitialProps(context)
-  const data = mergeDeepRight(appProps, { pageProps: { language_1: 'test_l' } })
+  const newProps = mergeDeepRight(appProps, { pageProps: { language_1: 'test_l' } })
 
-  console.log('getInitialProps data: ', data)
-
-  return data
+  return newProps
 }
 
 export default MyApp

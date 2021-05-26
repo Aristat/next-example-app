@@ -1,15 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux'
-import {APP_SET_RANDOM_NUMBER} from "../../constants/posts";
-import Link from "next/link";
+import Link from 'next/link'
+import { APP_SET_RANDOM_NUMBER } from '../../constants/posts'
 
 const reduxProps = () => {
-  const randomNumber = useSelector((state) => state.postsReducer.randomNumber)
-  const posts = useSelector((state) => state.postsReducer.posts)
+  const randomNumber = useSelector(state => state.postsReducer.randomNumber)
+  const posts = useSelector(state => state.postsReducer.posts)
   const dispatch = useDispatch()
-  const setRandomNumber = () =>
-    dispatch({
-      type: APP_SET_RANDOM_NUMBER,
-    })
+  const setRandomNumber = () => dispatch({
+    type: APP_SET_RANDOM_NUMBER,
+  })
   return { randomNumber, posts, setRandomNumber }
 }
 
@@ -21,10 +20,10 @@ const Blog = () => {
       <h1>Trending Projects</h1>
       <div>
         {posts ? posts.map(post => (
-            <p key={post.name}>
-              <span>{post.name}</span>
-            </p>
-          ))
+          <p key={post.name}>
+            <span>{post.name}</span>
+          </p>
+        ))
           : 'loading...'}
       </div>
       <div>
@@ -32,7 +31,9 @@ const Blog = () => {
           {randomNumber}
         </p>
 
-        <button onClick={setRandomNumber}>Set random number</button>
+        <button type="button" onClick={setRandomNumber}>
+          Set random number
+        </button>
       </div>
       <div>
         <p>
@@ -45,4 +46,4 @@ const Blog = () => {
   )
 }
 
-export default Blog;
+export default Blog

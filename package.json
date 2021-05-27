@@ -1,7 +1,8 @@
 {
   "name": "next-example-app",
   "version": "0.1.0",
-  "private": true,
+  "author": "Alexander Strelnikov <aristat37@gmail.com>",
+  "license": "MIT",
   "engines": {
     "node": "16.2.0",
     "yarn": "1.22.10"

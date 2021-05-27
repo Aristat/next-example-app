@@ -1,20 +1,15 @@
 import { useDispatch } from 'react-redux'
 import Link from 'next/link'
-import { APP_SET_RANDOM_NUMBER } from '../../constants/posts'
 import { selectRandomNumber, selectPosts } from '../../selectors/posts'
-
-const reduxProps = () => {
-  const dispatch = useDispatch()
-  const setRandomNumber = () => dispatch({
-    type: APP_SET_RANDOM_NUMBER,
-  })
-  return { setRandomNumber }
-}
+import { updateRandomNumber } from '../../actions/posts'
 
 const Blog = () => {
+  const dispatch = useDispatch()
   const randomNumber = selectRandomNumber()
   const posts = selectPosts()
-  const { setRandomNumber } = reduxProps()
+  const handleRandomNumber = () => {
+    updateRandomNumber(dispatch)
+  }
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -32,7 +27,7 @@ const Blog = () => {
           {randomNumber}
         </p>
 
-        <button type="button" onClick={setRandomNumber}>
+        <button type="button" onClick={handleRandomNumber}>
           Set random number
         </button>
       </div>

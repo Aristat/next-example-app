@@ -1,29 +1,29 @@
 import { evolve } from 'ramda'
-import { createReducer } from '../store/reducer'
+import { createReducer } from '../utils/redux'
 import {
-  APP_INCREMENT,
-  APP_DECREMENT,
-} from '../constants/calculator'
+  increment,
+  decrement,
+} from '../actions/calculator'
 
 const initialState = {
   counter: 0,
 }
 
-const increment = (state, { payload }) => {
+const handleIncrement = (state, { payload }) => {
   console.log('calculator increment, payload: ', payload, ' state: ', state)
 
   return evolve({ counter: counter => counter + 1 }, state)
 }
 
-const decrement = (state, { payload }) => {
+const handleDecrement = (state, { payload }) => {
   console.log('calculator decrement, payload: ', payload, ' state: ', state)
 
   return evolve({ counter: counter => counter - 1 }, state)
 }
 
 const handlers = {
-  [APP_INCREMENT]: increment,
-  [APP_DECREMENT]: decrement,
+  [increment]: handleIncrement,
+  [decrement]: handleDecrement,
 }
 
 const calculatorReducer = createReducer(initialState, handlers)

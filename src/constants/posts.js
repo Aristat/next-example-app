@@ -1,1 +1,1 @@
-export const APP_SET_RANDOM_NUMBER = 'APP_SET_RANDOM_NUMBER'
+export const POST_REDUCER = 'postsReducer'

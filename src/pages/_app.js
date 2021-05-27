@@ -25,9 +25,7 @@ MyApp.propTypes = {
 
 MyApp.getInitialProps = async context => {
   const appProps = await App.getInitialProps(context)
-  const newProps = mergeDeepRight(appProps, { pageProps: { language_1: 'test_l' } })
-
-  return newProps
+  return mergeDeepRight(appProps, { pageProps: { language_1: 'test_l' } })
 }
 
 export default MyApp

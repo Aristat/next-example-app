@@ -1,26 +1,18 @@
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import styles from './home.module.css'
-import {
-  APP_INCREMENT,
-  APP_DECREMENT,
-} from '../../constants/calculator'
 import { selectCounter } from '../../selectors/calculator'
-
-const reduxProps = () => {
-  const dispatch = useDispatch()
-  const increment = () => dispatch({
-    type: APP_INCREMENT,
-  })
-  const decrement = () => dispatch({
-    type: APP_DECREMENT,
-  })
-  return { increment, decrement }
-}
+import { updateIncrement, updateDecrement } from '../../actions/calculator'
 
 const Home = () => {
   const counter = selectCounter()
-  const { increment, decrement } = reduxProps()
+  const dispatch = useDispatch()
+  const handleIncrement = () => {
+    updateIncrement(dispatch)
+  }
+  const handleDecrement = () => {
+    updateDecrement(dispatch)
+  }
 
   return (
     <div className={styles.Home}>
@@ -54,8 +46,8 @@ const Home = () => {
           {counter}
         </p>
 
-        <button type="button" onClick={increment}>Click Increment</button>
-        <button type="button" onClick={decrement}>Click Decrement</button>
+        <button type="button" onClick={handleIncrement}>Click Increment</button>
+        <button type="button" onClick={handleDecrement}>Click Decrement</button>
       </header>
     </div>
   )

@@ -1,13 +1,15 @@
 import { evolve } from 'ramda'
-import { APP_SET_RANDOM_NUMBER } from '../constants/posts'
-import { createReducer } from '../store/reducer'
+import { createReducer } from '../utils/redux'
+import {
+  randomNumber,
+} from '../actions/posts'
 
 const initialState = {
   posts: [],
   randomNumber: 0,
 }
 
-const generateRandomNumber = (state, { payload }) => {
+const handleRandomNumber = (state, { payload }) => {
   console.log('posts generateRandomNumber, payload: ', payload, ' state: ', state)
 
   return evolve({
@@ -16,7 +18,7 @@ const generateRandomNumber = (state, { payload }) => {
 }
 
 const handlers = {
-  [APP_SET_RANDOM_NUMBER]: generateRandomNumber,
+  [randomNumber]: handleRandomNumber,
 }
 
 const postsReducer = createReducer(initialState, handlers)

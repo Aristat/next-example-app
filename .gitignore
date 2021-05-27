@@ -24,6 +24,9 @@ yarn-error.log*
 
 .idea
 
+# husky
+.husky
+
 # next.js
 /.next/
 /out/

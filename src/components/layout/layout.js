@@ -9,7 +9,7 @@ const Layout = ({ children }) => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.objectOf(PropTypes.object),
+  children: PropTypes.objectOf(PropTypes.any),
 }
 
 export default Layout

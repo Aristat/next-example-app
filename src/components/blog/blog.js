@@ -1,19 +1,20 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Link from 'next/link'
 import { APP_SET_RANDOM_NUMBER } from '../../constants/posts'
+import { selectRandomNumber, selectPosts } from '../../selectors/posts'
 
 const reduxProps = () => {
-  const randomNumber = useSelector(state => state.postsReducer.randomNumber)
-  const posts = useSelector(state => state.postsReducer.posts)
   const dispatch = useDispatch()
   const setRandomNumber = () => dispatch({
     type: APP_SET_RANDOM_NUMBER,
   })
-  return { randomNumber, posts, setRandomNumber }
+  return { setRandomNumber }
 }
 
 const Blog = () => {
-  const { randomNumber, posts, setRandomNumber } = reduxProps()
+  const randomNumber = selectRandomNumber()
+  const posts = selectPosts()
+  const { setRandomNumber } = reduxProps()
 
   return (
     <div style={{ textAlign: 'center' }}>

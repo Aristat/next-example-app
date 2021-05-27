@@ -2,7 +2,7 @@ import { evolve } from 'ramda'
 import { APP_SET_RANDOM_NUMBER } from '../constants/posts'
 import { createReducer } from '../store/reducer'
 
-export const POSTS_INITIAL_STATE = {
+const initialState = {
   posts: [],
   randomNumber: 0,
 }
@@ -19,5 +19,5 @@ const handlers = {
   [APP_SET_RANDOM_NUMBER]: generateRandomNumber,
 }
 
-const postsReducer = createReducer(POSTS_INITIAL_STATE, handlers)
+const postsReducer = createReducer(initialState, handlers)
 export default postsReducer

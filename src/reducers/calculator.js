@@ -5,7 +5,7 @@ import {
   APP_DECREMENT,
 } from '../constants/calculator'
 
-export const CALCULATOR_INITIAL_STATE = {
+const initialState = {
   counter: 0,
 }
 
@@ -26,5 +26,5 @@ const handlers = {
   [APP_DECREMENT]: decrement,
 }
 
-const calculatorReducer = createReducer(CALCULATOR_INITIAL_STATE, handlers)
+const calculatorReducer = createReducer(initialState, handlers)
 export default calculatorReducer

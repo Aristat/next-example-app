@@ -1,14 +1,13 @@
 import Link from 'next/link'
-import { useSelector, useDispatch } from 'react-redux'
-import { path } from 'ramda'
+import { useDispatch } from 'react-redux'
 import styles from './home.module.css'
 import {
   APP_INCREMENT,
   APP_DECREMENT,
 } from '../../constants/calculator'
+import { selectCounter } from '../../selectors/calculator'
 
 const reduxProps = () => {
-  const counter = useSelector(state => path(['calculatorReducer', 'counter'], state))
   const dispatch = useDispatch()
   const increment = () => dispatch({
     type: APP_INCREMENT,
@@ -16,11 +15,12 @@ const reduxProps = () => {
   const decrement = () => dispatch({
     type: APP_DECREMENT,
   })
-  return { counter, increment, decrement }
+  return { increment, decrement }
 }
 
 const Home = () => {
-  const { counter, increment, decrement } = reduxProps()
+  const counter = selectCounter()
+  const { increment, decrement } = reduxProps()
 
   return (
     <div className={styles.Home}>

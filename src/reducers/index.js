@@ -1,10 +1,5 @@
-import calculatorReducer, { CALCULATOR_INITIAL_STATE } from './calculator'
-import postsReducer, { POSTS_INITIAL_STATE } from './posts'
-
-export const initReducersState = {
-  calculatorReducer: CALCULATOR_INITIAL_STATE,
-  postsReducer: POSTS_INITIAL_STATE,
-}
+import calculatorReducer from './calculator'
+import postsReducer from './posts'
 
 export const rootReducers = {
   calculatorReducer,

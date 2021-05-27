@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { rootReducers, initReducersState } from '../reducers'
+import { rootReducers } from '../reducers'
 
 let store
 
@@ -10,7 +10,7 @@ const createReducer = (asyncReducers = {}) => combineReducers({
   ...asyncReducers,
 })
 
-function initStore(preloadedState = initReducersState) {
+function initStore(preloadedState) {
   return createStore(
     createReducer(),
     preloadedState,

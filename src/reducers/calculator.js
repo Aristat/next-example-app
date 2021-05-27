@@ -12,13 +12,13 @@ const initialState = {
 const handleIncrement = (state, { payload }) => {
   console.log('calculator increment, payload: ', payload, ' state: ', state)
 
-  return evolve({ counter: counter => counter + 1 }, state)
+  return evolve({ counter: c => c + 1 }, state)
 }
 
 const handleDecrement = (state, { payload }) => {
   console.log('calculator decrement, payload: ', payload, ' state: ', state)
 
-  return evolve({ counter: counter => counter - 1 }, state)
+  return evolve({ counter: c => c - 1 }, state)
 }
 
 const handlers = {

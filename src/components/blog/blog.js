@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux'
 import Link from 'next/link'
 import { selectRandomNumber, selectPosts } from '../../selectors/posts'
-import { updateRandomNumber } from '../../actions/posts'
+import { updateRandomNumber, updateIncrement } from '../../actions/posts'
 
 const Blog = () => {
   const dispatch = useDispatch()
@@ -9,6 +9,9 @@ const Blog = () => {
   const posts = selectPosts()
   const handleRandomNumber = () => {
     updateRandomNumber(dispatch)
+  }
+  const handleIncrement = () => {
+    updateIncrement(dispatch)
   }
 
   return (
@@ -29,6 +32,9 @@ const Blog = () => {
 
         <button type="button" onClick={handleRandomNumber}>
           Set random number
+        </button>
+        <button type="button" onClick={handleIncrement}>
+          Increment
         </button>
       </div>
       <div>

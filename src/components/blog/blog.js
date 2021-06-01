@@ -7,11 +7,11 @@ const Blog = () => {
   const dispatch = useDispatch()
   const randomNumber = selectRandomNumber()
   const posts = selectPosts()
-  const handleRandomNumber = () => {
-    updateRandomNumber(dispatch)
+  const handleRandomNumber = async () => {
+    await updateRandomNumber(dispatch)
   }
-  const handleIncrement = () => {
-    updateIncrement(dispatch)
+  const handleIncrement = async () => {
+    await updateIncrement(dispatch)
   }
 
   return (
@@ -27,6 +27,8 @@ const Blog = () => {
       </div>
       <div>
         <p>
+          Random number
+          {' '}
           {randomNumber}
         </p>
 

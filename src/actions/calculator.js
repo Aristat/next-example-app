@@ -4,10 +4,10 @@ const act = createAct('calculator')
 export const increment = act('increment')
 export const decrement = act('decrement')
 
-export const updateIncrement = dispatch => {
+export const updateIncrement = async dispatch => {
   dispatch(increment())
 }
 
-export const updateDecrement = dispatch => {
+export const updateDecrement = async dispatch => {
   dispatch(decrement())
 }

@@ -4,7 +4,7 @@ const act = createAct('posts')
 export const randomNumber = act('setRandomNumber')
 export const increment = act('increment')
 
-export const updateRandomNumber = dispatch => {
+export const updateRandomNumber = async dispatch => {
   // Test payload, check post reducer 'handleRandomNumber'
   const data = {
     randomNumber: Math.floor(Math.random() * 999),
@@ -12,6 +12,6 @@ export const updateRandomNumber = dispatch => {
   dispatch(randomNumber(data))
 }
 
-export const updateIncrement = dispatch => {
+export const updateIncrement = async dispatch => {
   dispatch(increment())
 }

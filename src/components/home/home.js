@@ -7,11 +7,11 @@ import { updateIncrement, updateDecrement } from '../../actions/calculator'
 const Home = () => {
   const counter = selectCounter()
   const dispatch = useDispatch()
-  const handleIncrement = () => {
-    updateIncrement(dispatch)
+  const handleIncrement = async () => {
+    await updateIncrement(dispatch)
   }
-  const handleDecrement = () => {
-    updateDecrement(dispatch)
+  const handleDecrement = async () => {
+    await updateDecrement(dispatch)
   }
 
   return (
@@ -43,6 +43,8 @@ const Home = () => {
         </a>
 
         <p>
+          Counter
+          {' '}
           {counter}
         </p>
 
